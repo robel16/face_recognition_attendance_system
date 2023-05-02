@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+{% block title %}
+Stuff page
+{% endblock %}
+{% block content %}
+<div class="row" style="margin-top:200px, margin-left-28px;">
+   <div class="col-8">
+      <h2>Stuff Page </h2>
+      <p>Click on the options to start </p>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">Course </th>
+               <th scope="col">Course code </th>
+               <th scope="col">Credit hour</th>
+               <th scope="col">Class room</th>
+               <th scope="col">Option</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+
+            {% for course  in course %}
+            {% include 'includes/take_attend.html' %}
+
+            <tr>
+
+               <td>{{ course.c_name }}</td>
+               <td>{{ course.code }}</td>
+               <td>{{ course.credit_hour }}</td>
+               <td>{{ course.class_r }}</td>
+               <td>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#modal-take_attend-{{ course.id }}">Take attendance</button>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#modal-attend_report-{{ course.id }}">Generate report</button>
+               </td>
+            </tr>
+            {% endfor %}
+
+
+
+         </tbody>
+      </table>
+   </div>
+   <div class="col-4">
+     <h2>View attendance </h2>
+       <p>Click the link to see your students attendance </p>
+       <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">Class </th>
+               <th scope="col">Course </th>
+               <th scope="col">Option</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for course  in course %}
+            <tr>
+               <td>{{ course.class_r }}</td>
+               <td>{{ course.c_name }}</td>
+               <td>
+                  <a class="btn btn-primary" href="{{ url_for('view_attend_page') }}">View attendance</a>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      </div>
+   </div>
+</div>
+{% endblock %}

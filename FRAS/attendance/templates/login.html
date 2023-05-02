@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+ stuff login page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+ <div class="container p-md-5 col-md-offset-3 col-md-5">
+     <form method = "POST" class="form.signin" style="color:white">
+         {{ form.hidden_tag() }}
+         <h1 class="h3 mb-4 font-weight-normal">
+            Please Login
+         </h1>
+         <div class="container">
+         <br>
+         {{ form.username.label() }}
+           {{ form.username(class="form-control", placeholder= "username") }}
+
+         {{ form.password.label() }}
+           {{ form.password(class="form-control", placeholder= "password") }}
+           <br>
+            {{ form.submit(class="btn btn-block btn-primary") }}
+         <br>
+             <!-- <span class="psw"> <a href="#">forgot password</a></span>-->
+         </div>
+          <div class="checkbox mb-3">
+                <h5> Don't have an account? </h5><br>
+                <a class="btn btn-sm btm-secondary " href="{{ url_for('register_page') }}"> <h6 style="color:white">Register</h6> </a>
+            </div>
+     </form>
+   </div>
+</body>
+{% endblock %}

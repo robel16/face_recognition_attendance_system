@@ -1,0 +1,73 @@
+<style>
+  .modal-content
+  {
+  background-color: #212121
+  }
+</style>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-take_attend-{{ course.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+           {{ course. c_name }}
+        </h5>
+         <button type="button" class="m1-2 mb-1 close " data-dismiss="modal" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+
+         <form method="POST">
+          {{ attendForm.hidden_tag()}}
+          <h4 class="text-center">Are you sure you want to take attendance for {{ course. c_name }} course?</h4><br>
+          <h6 class="text-center">By clicking take attendance you  will take attendance of {{ course. c_name }} course </h6><br>
+         <input id="take_attend" name="take_attend" type="hidden" value="{{ course.c_name }}">
+
+          {{ attendForm.submit(class="btn btn-outline-success btn-block") }}<br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- purchase Modal -->
+<div class="modal fade" id="modal-attend_report-{{ course.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+           {{ course.c_name }}
+        </h5>
+         <button type="button" class="m1-2 mb-1 close " data-dismiss="modal" aria-label="close">
+              <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST">
+         {{ reportForm.hidden_tag() }}
+          <h4 class="text-center">By clicking generate report you can generate {{ course.c_name }} attendance report ?</h4><br>
+          <input id="report_attend" name="report_attend" type="hidden" value="{{ course.c_name }}">
+         {{ reportForm.submit(class="btn btn-outline-info btn-block") }}<br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
